@@ -2,7 +2,10 @@
 // /var/www/vulnerable-app/includes/posts.php
 function create_post($title, $content, $author_id) {
     global $db_connection;
-    $query = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', $author_id)";
+    // Удалите или закомментируйте следующие строки для отключение валидации ввода
+    // $title = pg_escape_string($title);
+    // $content = pg_escape_string($content); 
+   $query = "INSERT INTO posts (title, content, author_id) VALUES ('$title', '$content', $author_id)";
     return pg_query($db_connection, $query);
 }
 
